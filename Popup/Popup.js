@@ -72,8 +72,12 @@ const bindEventsOnNotes = () => {
   const notes = document.getElementsByClassName("Note");
   for (let note of notes) {
     const noteId = note.getAttribute("data-for");
-    //copy btn
+    //del btn by id
     note.getElementsByTagName("button")[0].addEventListener("click", () => {
+      deleteNote(noteId);
+    });
+    //copy btn
+    note.getElementsByTagName("button")[1].addEventListener("click", () => {
       console.log("here");
       var content = note.getElementsByTagName("input")[0].value;
       navigator.clipboard.writeText(content);
@@ -82,10 +86,7 @@ const bindEventsOnNotes = () => {
     note.getElementsByTagName("input")[0].addEventListener("change", (e) => {
       updateContent(noteId, e.target.value);
     });
-    //del btn by id
-    note.getElementsByTagName("button")[1].addEventListener("click", () => {
-      deleteNote(noteId);
-    });
+
   }
 };
 
@@ -106,9 +107,9 @@ printNotesOnScreen();
 var note = (id, value) => {
   return `
         <div class="Note" data-for="${id}">
-            <button>copy</button>
-            <input value="${value}"/>
-            <button>del</button>
+        <button>&#10005;</button>
+        <textarea>${value}</textarea>
+        <button>&#9986;</button>
         </div>
     `;
 };
