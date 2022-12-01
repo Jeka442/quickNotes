@@ -79,11 +79,11 @@ const bindEventsOnNotes = () => {
     //copy btn
     note.getElementsByTagName("button")[1].addEventListener("click", () => {
       console.log("here");
-      var content = note.getElementsByTagName("input")[0].value;
+      var content = note.getElementsByTagName("textarea")[0].value;
       navigator.clipboard.writeText(content);
     });
     //update content by id
-    note.getElementsByTagName("input")[0].addEventListener("change", (e) => {
+    note.getElementsByTagName("textarea")[0].addEventListener("change", (e) => {
       updateContent(noteId, e.target.value);
     });
 
