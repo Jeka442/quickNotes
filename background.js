@@ -3,8 +3,19 @@ function PasteToElement(info, tab, text) {
     chrome.tabs.sendMessage(tab.id, { message: "pasteToInput", value: text }, { frameId: info.frameId });
 }
 
+
 chrome.storage.local.onChanged.addListener(async () => {
-    await chrome.contextMenus.remove("QuickNotes")
+    await addContextMenu();
+})
+
+const addContextMenu = async () => {
+    await chrome.contextMenus.removeAll();
+    chrome.contextMenus.create({
+        id: "QuickNotesAdd",
+        title: "Save as Note",
+        contexts: ["selection"]
+    })
+
     chrome.contextMenus.create({
         id: "QuickNotes",
         title: "QuickPaste",
@@ -22,7 +33,7 @@ chrome.storage.local.onChanged.addListener(async () => {
             })
         }
     }
-})
+}
 
 
 const GetUuid = () => {
@@ -54,8 +65,4 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 });
 
 
-chrome.contextMenus.create({
-    id: "QuickNotesAdd",
-    title: "Save as Note",
-    contexts: ["selection"]
-})
+addContextMenu();
