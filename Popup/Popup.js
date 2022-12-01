@@ -78,7 +78,6 @@ const bindEventsOnNotes = () => {
     });
     //copy btn
     note.getElementsByTagName("button")[1].addEventListener("click", () => {
-      console.log("here");
       var content = note.getElementsByTagName("textarea")[0].value;
       navigator.clipboard.writeText(content);
     });
