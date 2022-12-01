@@ -1,0 +1,17 @@
+{
+  "name": "quickNote",
+  "description": "Quick notes",
+  "version": "0.0.0.1",
+  "manifest_version": 3,
+  "host_permissions": ["<all_urls>"],
+  "permissions": ["storage", "activeTab", "scripting", "tabs", "cookies"],
+  "action": {
+    "default_popup": "Popup/Popup.html"
+  },
+  "icons": {
+    "16": "img/icon16.png",
+    "32": "img/icon32.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  }
+}
