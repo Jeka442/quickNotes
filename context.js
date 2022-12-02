@@ -11,11 +11,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         const tagName = elm.tagName.toLowerCase();
         if (tagName == "input" || tagName == "textarea" || tagName == "select") {
             let changeEvent = new Event("change", { bubbles: true, cancelable: true, composed: true });
-            elm.value = request.value;
-            elm.innerText = request.value;
+            const valueToPaste = `${elm.value}${request.value}`;
+
+            elm.value = valueToPaste;
+            elm.innerText = valueToPaste;
             elm.dispatchEvent(changeEvent);
         } else {
-            elm.innerText = request.value;
+            const innerText = `${elm.innerText}${request.value}`
+            elm.innerText = innerText;
         }
 
 
