@@ -3,7 +3,6 @@
   "description": "Quick notes",
   "version": "0.0.0.1",
   "manifest_version": 3,
-  "host_permissions": ["<all_urls>"],
   "permissions": ["storage", "scripting", "contextMenus"],
   "action": {
     "default_popup": "Popup/Popup.html"
