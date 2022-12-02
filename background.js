@@ -15,14 +15,13 @@ const addContextMenu = async () => {
         title: "Save as Note",
         contexts: ["selection"]
     })
-
-    chrome.contextMenus.create({
-        id: "QuickNotes",
-        title: "QuickPaste",
-        contexts: ["editable"]
-    })
     const Notes = await chrome.storage.local.get("Notes");
-    if (Notes?.Notes) {
+    if (Notes?.Notes && Notes.Notes.length > 0) {
+        chrome.contextMenus.create({
+            id: "QuickNotes",
+            title: "QuickPaste",
+            contexts: ["editable"]
+        })
         let index = 0;
         for (let note of Notes.Notes) {
             chrome.contextMenus.create({
