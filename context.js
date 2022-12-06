@@ -1,10 +1,8 @@
 var elm = null;
 
-
 document.addEventListener("contextmenu", function (event) {
     elm = event.target;
 }, true);
-
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.message == "pasteToInput") {
@@ -22,6 +20,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             valueToPaste = margeValues(elmInnerText, request.value);
             elm.innerText = valueToPaste;
         }
+        sendResponse(true);
     }
 });
 
@@ -29,3 +28,4 @@ const margeValues = (nullableValue, value) => {
     if (nullableValue != undefined && nullableValue != null && nullableValue != "") return `${nullableValue}${value}`
     return value
 }
+
