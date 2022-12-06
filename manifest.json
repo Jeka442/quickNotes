@@ -1,7 +1,7 @@
 {
   "name": "quickNote",
   "description": "Quick notes",
-  "version": "0.0.0.3",
+  "version": "0.0.0.4",
   "manifest_version": 3,
   "permissions": ["storage", "contextMenus"],
   "action": {
@@ -10,6 +10,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
+      "all_frames": true,
       "js": ["context.js"]
     }
   ],
